@@ -1,0 +1,51 @@
+جسين وفقي عبدالحفيظ علي 
+  
+sec: 1
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+adj_list={
+         'A':['B','C'],
+         'B':['D','E'],
+         'C':['B','F'],
+         'D':[],
+         'E':['F'],
+         'F':[]}
+color ={}
+parent={}
+traverse_time={}
+dfs_traversal_output=[]
+for node in adj_list.keys():
+    color[node]='w'
+    parent[node]=None
+    traverse_time[node]=[-1,-1]
+print (color)
+print (parent)
+print (traverse_time)
+
+time=0
+
+def dfs(u):
+    global time
+    color[u]='g'
+    traverse_time[u][0]=time
+    dfs_traversal_output.append(u)
+    for v in adj_list[u]:
+        if color[v]=='w':
+            parent[v]=u
+            dfs(v)
+        
+ 
+    color [u]='b'
+    traverse_time[u][1]=time
+    time+=1
+    
+dfs('A')
+print (color)
+print (parent)
+print (traverse_time)
+
+for node in adj_list.keys():
+    print (node , " => " , traverse_time[node])
+        
+    
